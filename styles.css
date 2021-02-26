@@ -1,0 +1,44 @@
+body {
+    background-color: rgb(236, 28, 36);
+    display: flex;
+    align-items: stretch;
+    min-height: 100vh;
+    flex-direction: column;
+    font-family: fantasy;
+}
+
+.encabezado {
+    /* border: 1px solid darkblue; */
+    height: 200px;
+}
+
+.encabezado h1 {
+    font-size: 3em;
+    text-align: center;
+}
+
+.encabezado span {
+    background-color: rgb(29, 29, 29);
+    color: white;
+    padding: 0.1rem 2rem;
+}
+
+.contadores {
+    /* border: 1px solid darkgreen; */
+    display: flex;
+}
+
+.contador-conainter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contadores > div {
+    /* border: 1px solid cyan; */
+    flex-grow: 1;
+}
+
+.odometer {
+    font-size: 4em;
+}

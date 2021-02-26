@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="odometer-theme-car.css">
+    <link rel="stylesheet" href="styles.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="encabezado">
+        <h1><span>NO SÉ QUE VA ACÁ</span></h1>
+    </div>
+
+    <div class="contadores">
+        <div class="contador-conainter">
+            <h2>CONTADOR 1</h2>
+            <div id="contador1">8000</div>
+        </div>
+        <div class="contador-conainter">
+            <h2>CONTADOR 2</h2>
+            <div id="contador2"></div>
+        </div>
+    </div>
+
+    <script src="odometer.min.js"></script>
+    <script>
+
+        // Iniciar
+        var valor = 0;
+        if (localStorage.getItem("contador") !== null) {
+            valor = localStorage.getItem("contador");
+        } else {
+            localStorage.setItem("contador", valor);
+        }
+
+        var contador1 = document.querySelector('#contador1');
+        var contador2 = document.querySelector('#contador2');
+
+        od1 = new Odometer({
+            el: contador1,
+            value: 8000,
+            format: '(.ddd)',
+            duration: 3000,
+            theme: 'car'
+        });
+
+        od2 = new Odometer({
+            el: contador2,
+            value: valor,
+            format: '(.ddd)',
+            duration: 3000,
+            theme: 'car'
+        });
+
+        function traer() {
+            fetch("https://api.keyvalue.xyz/77bfdd39/valor")
+            .then(res => res.text())
+            .then((data) => {
+                console.log(data);
+                if(localStorage.getItem("contador") != data){
+                    localStorage.setItem("contador", data);
+                    od2.update(data);
+                }
+            });
+        }
+
+        // Recuperar
+        traer();
+        setInterval(function(){
+            traer();
+        }, 5000);
+    </script>
+</body>
+</html>
