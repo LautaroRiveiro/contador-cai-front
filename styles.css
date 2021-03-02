@@ -4,7 +4,7 @@ body {
     flex-direction: column;
     align-items: stretch;
     flex-direction: column;
-    font-family: fantasy;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 h2 {
@@ -20,6 +20,7 @@ h2 {
 .encabezado h1 {
     font-size: 3.5em;
     text-align: center;
+    padding: 0rem 1rem;
 }
 
 .encabezado span {
@@ -48,4 +49,24 @@ h2 {
 
 .odometer {
     font-size: 4em;
+}
+
+
+@media screen and (max-width: 720px) {
+    h2 {
+        font-size: 2em;
+    }
+
+    .encabezado {
+        margin-bottom: 0em;
+    }
+
+    .encabezado h1 {
+        font-size: 2em;
+        padding: 0rem 1rem;
+    }
+    
+    .odometer {
+        font-size: 2.5em;
+    }
 }
